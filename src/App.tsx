@@ -1,26 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Accordion from "./Components/Accordion/Accordion";
+import {Rating} from "./Components/Rating/Rating";
+import OnOff from './Components/OnOff/OnOff';
+import UncontrolledAccordion from './Components/UncontrolledAccordion/UncontrolledAccordion';
+import {UncontrolledRating} from './Components/UncontrolledRating/UncontrolledRating';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    // console.log("App rendering")
+    return (
+        <div className={"App"}>
+           {/* <OnOff />
+            <OnOff />
+            <OnOff />
+            <OnOff />*/}
+
+            <UncontrolledAccordion titleValue={'TEST'} />
+            <UncontrolledRating />
+        </div>
+    )
 }
+
+type PageTittlePropsType = {
+    title: string
+}
+function PageTitle(props: PageTittlePropsType) {
+    console.log("PageTitle rendering")
+    return (
+        <h1>{ props.title }</h1>
+    )
+}
+
 
 export default App;
