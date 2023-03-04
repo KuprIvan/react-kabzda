@@ -3,54 +3,37 @@ import React from "react";
 
 type AccordionPropsType = {
     titleValue: string
-    value: number
     collapsed: boolean
+    onClick: (collapsed: boolean) => void
 }
+
 function Accordion(props: AccordionPropsType) {
     console.log("Accordion rendering")
-    if (props.collapsed) {
-        return (
-            <div>
-                <AccordionTitle title={props.titleValue}/>
-                <AccordionBody value={props.titleValue}/>
-            </div>
-        )
-    } else {
-        return (
-            <div>
-                <AccordionTitle title={props.titleValue}/>
-            </div>
-        )
-    }
-
+    return (
+        <div>
+            <AccordionTitle title={props.titleValue} collapsed={props.collapsed} onClick={props.onClick}/>
+            {props.collapsed && <AccordionBody /> }
+        </div>
+    )
 }
 
 type AccordionTitlePropsType = {
     title: string
+    collapsed: boolean
+    onClick: (collapsed: boolean) => void
 }
+
 function AccordionTitle(props: AccordionTitlePropsType) {
     console.log("AccordionTitle rendering")
     return (
-        <h3>{ props.title }</h3>
+        <h3 onClick={() => {
+            props.onClick(!props.collapsed)
+        }}>{props.title}</h3>
     )
 }
-function AccordionBody(props: any) {
+
+function AccordionBody(): JSX.Element {
     console.log("AccordionMenu rendering")
-    if (props.value === 1) {
-        return (
-            <ul>
-                <li>1</li>
-            </ul>
-        )
-    }
-    if (props.value === 2) {
-        return (
-            <ul>
-                <li>1</li>
-                <li>2</li>
-            </ul>
-        )
-    }
     return (
         <ul>
             <li>1</li>
@@ -58,7 +41,6 @@ function AccordionBody(props: any) {
             <li>3</li>
         </ul>
     )
-
 }
 
 export default Accordion;
