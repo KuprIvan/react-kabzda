@@ -3,12 +3,13 @@ import React, {FC, useState} from 'react';
 
 type PropsType = {
     onChange: (onOff: boolean) => void
+    defaultOn?: boolean
 }
 
 
-const UncontrolledOnOff: FC<PropsType> = (props) => {
+const OnOff: FC<PropsType> = (props) => {
 
-    let [on, setOn] = useState(false)
+    let [on, setOn] = useState(props.defaultOn ? props.defaultOn : false)
 
     const onStyle = {
         display: 'inline-block',
@@ -60,4 +61,5 @@ const UncontrolledOnOff: FC<PropsType> = (props) => {
     </div>
 };
 
-export default UncontrolledOnOff;
+export const UncontrolledOnOff = React.memo(OnOff)
+

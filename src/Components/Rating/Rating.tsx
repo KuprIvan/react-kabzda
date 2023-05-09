@@ -6,8 +6,13 @@ export type RatingPropsType = {
     value: RatingValueType
     onClick: (value: RatingValueType) => void
 }
+type StarPropsType = {
+    selected: boolean
+    onClick: (value: RatingValueType) => void
+    value: RatingValueType
+}
 
-export function Rating(props: RatingPropsType) {
+function RatingList(props: RatingPropsType) {
     console.log("UncontrolledRating rendering")
 
     return (
@@ -21,11 +26,7 @@ export function Rating(props: RatingPropsType) {
     )
 }
 
-type StarPropsType = {
-    selected: boolean
-    onClick: (value: RatingValueType) => void
-    value: RatingValueType
-}
+
 
 function Star(props: StarPropsType) {
     console.log("Star rendering")
@@ -33,3 +34,5 @@ function Star(props: StarPropsType) {
         {props.selected ? <b>Star </b> : 'Star '}
     </span>
 }
+
+export const Rating = React.memo(RatingList)

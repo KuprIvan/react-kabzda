@@ -7,7 +7,7 @@ type PropsType = {
 }
 
 
-const OnOff: FC<PropsType> = (props) => {
+const Switcher: FC<PropsType> = (props) => {
 
     const onStyle = {
         display: 'inline-block',
@@ -44,4 +44,5 @@ const OnOff: FC<PropsType> = (props) => {
     </div>
 };
 
-export default OnOff;
+export const OnOff = React.memo(Switcher)
+
