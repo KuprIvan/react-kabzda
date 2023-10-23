@@ -9,7 +9,7 @@ type PropsType = {
 
 const OnOff: FC<PropsType> = (props) => {
 
-    let [on, setOn] = useState(props.defaultOn ? props.defaultOn : false)
+    let [on, setOn] = useState<boolean>(props.defaultOn ? props.defaultOn : false)
 
     const onStyle = {
         display: 'inline-block',

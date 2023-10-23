@@ -10,10 +10,10 @@ export default {
 
 const callback = action('on or off clicked')
 
-export const OnMode = () => <OnOff onOff={false} onClick={callback} />;
-export const OffMode = () => <OnOff onOff={true} onClick={callback} />;
+export const OnMode = () => <OnOff onOff={true} onClick={callback} />;
+export const OffMode = () => <OnOff onOff={false} onClick={callback} />;
 export const ModeChanging = () => {
-    const [value, setValue] = useState(true)
+    const [value, setValue] = useState<boolean>(true)
 
     return <OnOff onOff={value} onClick={setValue} />;
 }

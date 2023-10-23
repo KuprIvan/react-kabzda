@@ -1,9 +1,11 @@
 import React, {useState} from "react";
 import {RatingValueType} from "../Rating/Rating";
+
 type StarPropsType = {
     selected: boolean
     setValue: () => void
 }
+
 type RatingPropsType = {
     defaultValue?: RatingValueType
     onChange: (value: RatingValueType) => void

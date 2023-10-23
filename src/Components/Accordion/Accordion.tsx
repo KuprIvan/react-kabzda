@@ -29,7 +29,7 @@ function AccordionMemo(props: AccordionPropsType) {
     console.log("Accordion rendering")
     return (
         <div>
-            <AccordionTitle title={props.titleValue} collapsed={props.collapsed} onChange={props.onChange}/>
+            <AccordionTitle title={props.titleValue} collapsed={props.collapsed} onChange={props.onChange} />
             {props.collapsed && <AccordionBody items={props.items} onClick={props.onClick}/>}
         </div>
     )
