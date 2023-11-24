@@ -13,7 +13,7 @@ export const TrackValueOfUncontrolledInput = () => {
         setValue(event.currentTarget.value)
     }
     return <>
-        <input onChange={onChangeInputHandler}/> - {value}
+        <input value={value} onChange={onChangeInputHandler}/>
     </>
 }
 export const GetValueWithUseRefHook = () => {
@@ -31,4 +31,36 @@ export const GetValueWithUseRefHook = () => {
         - {value}
     </>
 }
+
+export const ControlledInput = () => {
+    const [parentValue, setParentValue] = useState<string>("")
+    const onChangeInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
+        setParentValue(event.currentTarget.value);
+    }
+    return <>
+        <input value={parentValue} onChange={onChangeInputHandler} />
+    </>
+};
+export const ControlledCheckbox = () => {
+    const [parentValue, setParentValue] = useState<boolean>(true)
+    const onClickInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
+        setParentValue(event.currentTarget.checked);
+    }
+    return <>
+        <input type="checkbox"
+               checked={parentValue}
+               onChange={onClickInputHandler}
+        />
+    </>
+};
+export const ControlledSelect = () => {
+    return <>
+        <select value={'1'}>
+            <option>none</option>
+            <option>test</option>
+            <option>2</option>
+            <option>3</option>
+        </select>
+    </>
+};
 export const ControlledInputWithFixedValue = () => <input  value={"it-incubator"}/>
