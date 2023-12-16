@@ -1,25 +1,35 @@
-import React, {useState} from "react";
-import {ItemType} from "../Accordion/Accordion";
+import React from "react";
+import styles from './Select.module.css'
 
-export type SelectPropsType = {
+
+type ItemType = {
+    title: string
+    value: string
+}
+
+type SelectPropsType = {
+    value?: string
     onChange: (value: any) => void
     items: ItemType[]
 }
 
-function CustomSelect(props: SelectPropsType) {
-    const [value, setValue] = useState<string>('test value')
-    const [isCollapsed, setIsCollapsed ] = useState(false)
+export function Select(props: SelectPropsType) {
+    const selectedItem = props.items.find(el => el.value === props.value)
 
-    const onClickHandlerMain = () => {
-        setIsCollapsed(!isCollapsed)
-    }
 
     return (
-        <div>
-            <div onClick={onClickHandlerMain}>{value}</div>
-            {isCollapsed && props.items.map((i, index) => <div key={index} onClick={() => { setValue(i.title); setIsCollapsed(!isCollapsed)}}>{i.title}</div>)}
-        </div>
+        <>
+            <select>
+                <option value="1">Minsk</option>
+                <option value="2">Kiev</option>
+                <option value="3">Moscow</option>
+            </select>
+            <div className={styles.select}>
+                <h3>{selectedItem && selectedItem.title}</h3>
+                <div className={styles.items}>
+                    {props.items.map(el => <div key={el.value}>{el.title}</div>)}
+                </div>
+            </div>
+        </>
     )
 }
-
-export const Select = React.memo(CustomSelect)
