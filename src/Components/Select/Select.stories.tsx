@@ -1,10 +1,37 @@
-import React from 'react'
-import {Select} from './Select'
-import {Rating} from "../Rating/Rating";
+import React, {useState} from 'react'
+import {Select} from "./Select";
+import {action} from "@storybook/addon-actions";
 
 export default {
-    title: 'Custom Select',
+    title: 'Select',
     component: Select
 }
 
-export const EmptySelect = () => <Select items={[{title: 'Ivan', value: 1},{title: 'Valera', value: 2}, {title: 'Viktor', value: 3}, {title: 'Artem', value: 4}]}  onChange={() => {}} />
+export const SelectWithValue = () => {
+    const [value, setValue] = useState<string>('1')
+    return <>
+        <Select value={value}
+                onChange={setValue}
+                items={[
+                    {value: '1', title: 'Minsk'},
+                    {value: '2', title: 'Moscow'},
+                    {value: '3', title: 'Kiev'},
+                ]}
+        />
+    </>
+}
+
+export const SelectNoValue = () => {
+    const [value, setValue] = useState<string | undefined>(undefined)
+    return <>
+        <Select
+            value={value}
+            onChange={setValue}
+            items={[
+                {value: '1', title: 'Minsk'},
+                {value: '2', title: 'Moscow'},
+                {value: '3', title: 'Kiev'},
+            ]}
+        />
+    </>
+}
