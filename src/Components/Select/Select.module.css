@@ -9,3 +9,8 @@
     position: absolute;
     padding: 5px;
 }
+
+.item.selected {
+    background-color: aquamarine;
+    color: #fff;
+}

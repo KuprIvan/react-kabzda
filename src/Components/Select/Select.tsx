@@ -14,8 +14,11 @@ type SelectPropsType = {
 }
 
 export function Select(props: SelectPropsType) {
+    const [active, setActive] = useState<boolean>(false);
+    const [hoveredElementValue, setHoveredElementValue] = useState<string | undefined>(props.value)
+
     const selectedItem = props.items.find(el => el.value === props.value);
-    const [active, setActive] = useState(false);
+    const hoveredItem = props.items.find(el => el.value === hoveredElementValue);
     const toggleActive = () => setActive(!active);
     const onChangeHandler = (value: string) => {
         props.onChange(value);
@@ -41,6 +44,8 @@ export function Select(props: SelectPropsType) {
                     <div className={styles.items}>
                         {props.items.map(el => <div
                             key={el.value}
+                            className={styles.item + " " + (hoveredItem ? styles.selected : "")}
+                            onMouseEnter={() => setHoveredElementValue(el.value)}
                             onClick={() => { onChangeHandler(el.value)}}
                         >{el.title}</div>)}
                     </div>
